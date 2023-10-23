@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+
+	<body>
+		<h1>ATN TOY</h1>
+		<!-- <h2>Dashboard</h2> -->
+		<!-- SIDEBAR -->
+		<%- include('./partials/sidebar.ejs') %>
+			<!-- SIDEBAR -->
+			<!-- CONTENT -->
+			<section id="content">
+				<!-- NAVBAR -->
+				<%- include('./partials/nav.ejs') %>
+					<!-- NAVBAR -->
+
+					<!-- MAIN -->
+					<main>
+						<div class="table-data">
+							<div class="order">
+								<div class="head">
+									<h3>Product List</h3>
+									<a href="/addproduct">
+										<button>
+											<span>Add</span>
+										</button>
+									</a>
+								</div>
+								<table>
+									<thead>
+										<tr>
+											<th>ID</th>
+											<th>Name</th>
+											<th>Price</th>
+											<th>Description</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<% if(products.length> 0) { %>
+											<% products.forEach(product=> { %>
+												<tr>
+													<td class="_id">
+														<%= product.id%>
+													</td>
+													<td class="name">
+														<%= product.name%>
+													</td>
+													<td class="price">
+														<%= product.price%>
+													</td>
+													<td class="description">
+														<%= product.description%>
+													</td>
+													<td>
+														<a type="button" class="btn btn-primary btn-sm delete" data-doc="<%= product.id%>">Delete</a>
+													</td>
+												</tr>
+											<% }) %>
+										<% } else { %>
+											<p>Have not products</p>
+										<% } %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</main>
+					<!-- MAIN -->
+			</section>
+			<!-- CONTENT -->
+			<%- include('./partials/footer.ejs') %>
+	</body>
+</html>
